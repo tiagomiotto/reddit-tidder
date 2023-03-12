@@ -1,4 +1,6 @@
 import React from "react";
+import { Votes } from "../../components/Votes";
+import { PostFooter } from "../../components/PostFooter";
 
 export function Post({
   id,
