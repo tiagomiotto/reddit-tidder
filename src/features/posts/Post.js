@@ -1,17 +1,25 @@
 import React from "react";
 
-export function Post(props) {
+export function Post({
+  id,
+  title,
+  subrreddit,
+  author_fullname,
+  score,
+  num_comments,
+  created,
+}) {
   return (
     <div className="post-frame">
-      <Votes score={props.score} />
+      <Votes score={score} />
       <div className="post-content-frame">
-        <h2 className="post-title">{props.title}</h2>
+        <h2 className="post-title">{title}</h2>
         <img src="" alt="" className="post-image-preview"></img>
       </div>
       <PostFooter
-        author_fullname={props.author_fullname}
-        num_comments={props.num_comments}
-        created={props.created}
+        author_fullname={author_fullname}
+        num_comments={num_comments}
+        created={created}
       />
     </div>
   );
