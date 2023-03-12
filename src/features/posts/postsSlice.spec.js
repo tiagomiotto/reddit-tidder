@@ -13,6 +13,7 @@ describe("posts reducer", () => {
       author_fullname: "Tiago",
       score: "1234",
       num_comments: 37,
+      created: "1678641605.0",
     };
     const expected = {
       posts: {
@@ -23,6 +24,7 @@ describe("posts reducer", () => {
           author_fullname: "Tiago",
           score: "1234",
           num_comments: 37,
+          created: "1678641605.0",
         },
       },
     };

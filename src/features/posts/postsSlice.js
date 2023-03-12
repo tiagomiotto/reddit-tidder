@@ -7,8 +7,15 @@ const postsSlice = createSlice({
   },
   reducers: {
     addPost: (state, action) => {
-      const { id, title, subrreddit, author_fullname, score, num_comments } =
-        action.payload;
+      const {
+        id,
+        title,
+        subrreddit,
+        author_fullname,
+        score,
+        num_comments,
+        created,
+      } = action.payload;
       state.posts[id] = {
         id,
         title,
@@ -16,6 +23,7 @@ const postsSlice = createSlice({
         author_fullname,
         score,
         num_comments,
+        created,
       };
     },
   },
