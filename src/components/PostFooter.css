@@ -1,0 +1,21 @@
+.post-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-footer-item {
+  padding: 1rem;
+}
+
+.post-footer-comments {
+  cursor: pointer;
+}
+
+.post-footer-comments::before {
+  content: url("../../public/comment.svg");
+  display: inline-block;
+  width: 1em;
+  padding-right: 0.5em;
+  vertical-align: middle;
+}
