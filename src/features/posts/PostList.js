@@ -8,8 +8,8 @@ export function PostList(props) {
 
   return (
     <div className="post-frame">
-      {posts.map((post) => (
-        <Post {...post} />
+      {Object.keys(posts).map((post) => (
+        <Post key={post.id} {...post} />
       ))}
     </div>
   );
