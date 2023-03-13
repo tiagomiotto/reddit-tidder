@@ -1,0 +1,18 @@
+.upvote-icon,
+.downvote-icon {
+  width: 3em;
+  cursor: pointer;
+  fill: aqua;
+}
+
+.post-vote-buttons {
+  font-size: 1.2em;
+}
+
+.upvote-icon:hover {
+  background-image: url("../assets/upvoteActive.svg");
+}
+
+.downvote-icon:hover {
+  background-image: url("../assets/downvoteActive.svg");
+}

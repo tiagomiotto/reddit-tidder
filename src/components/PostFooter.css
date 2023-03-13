@@ -13,7 +13,7 @@
 }
 
 .post-footer-comments::before {
-  content: url("../../public/comment.svg");
+  content: url("../assets/comment.svg");
   display: inline-block;
   width: 1em;
   padding-right: 0.5em;

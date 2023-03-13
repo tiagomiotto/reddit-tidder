@@ -7,7 +7,9 @@
 .post-frame {
   margin: 1rem 1rem;
   box-shadow: 5px 5px 20px 0px #f8f9fa4b;
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa; */
+  background-color: #111314c2;
+  position: relative;
 }
 
 .post-content-frame {
@@ -21,5 +23,12 @@
 }
 
 .post-image-preview {
-  width: 100%;
+  max-width: 50%;
+  /* display: none; */
+}
+
+.post-vote-buttons {
+  position: absolute;
+  left: 3.5%;
+  top: 10%;
 }
