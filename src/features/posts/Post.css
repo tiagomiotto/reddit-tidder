@@ -1,0 +1,23 @@
+.post-frame,
+.post-content-frame {
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.post-frame {
+  margin: 1rem 1rem;
+  box-shadow: 5px 5px 20px 0px #f8f9fa4b;
+  background-color: #f8f9fa;
+}
+
+.post-content-frame {
+  background-color: #ffffff;
+  position: relative;
+  left: 10%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-image-preview {
+}
