@@ -7,10 +7,22 @@ export function PostList(props) {
   const posts = useSelector(selectPosts);
 
   return (
-    <div className="post-frame">
-      {Object.keys(posts).map((post) => (
-        <Post key={post.id} {...post} />
-      ))}
+    <div className="post-list">
+      {Object.keys(posts).map((key) => {
+        const post = posts[key];
+        return (
+          <Post
+            key={post.id}
+            id={post.id}
+            title={post.title}
+            subrreddit={post.subrreddit}
+            author_fullname={post.author_fullname}
+            score={post.score}
+            num_comments={post.num_comments}
+            created={post.created}
+          />
+        );
+      })}
     </div>
   );
 }
