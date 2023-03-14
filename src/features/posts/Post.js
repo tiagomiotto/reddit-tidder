@@ -11,17 +11,20 @@ export function Post({
   score,
   num_comments,
   created,
+  url_overridden_by_dest,
 }) {
   return (
     <div className="post-frame">
       <Votes score={score} />
       <div className="post-content-frame">
         <h2 className="post-title">{title}</h2>
-        <img
-          src="https://cdn.pixabay.com/photo/2014/06/03/19/38/road-sign-361514_960_720.png"
-          alt=""
-          className="post-image-preview"
-        ></img>
+        {url_overridden_by_dest && (
+          <img
+            src={url_overridden_by_dest}
+            alt="Post "
+            className="post-image-preview"
+          ></img>
+        )}
 
         <PostFooter
           author_fullname={author_fullname}

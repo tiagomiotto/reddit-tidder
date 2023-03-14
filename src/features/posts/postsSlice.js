@@ -1,20 +1,18 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { fetchPostsAPI } from "./postsAPI";
 
-// const fetchPosts = createAsyncThunk("posts/loadPosts", async(us));
+export const loadPosts = createAsyncThunk(
+  "posts/loadPosts",
+  async (thunkAPI) => {
+    const response = await fetchPostsAPI("popular");
+    return response;
+  }
+);
 const postsSlice = createSlice({
   name: "posts",
   initialState: {
-    posts: {
-      13: {
-        id: 13,
-        title: "Hi",
-        subreddit: "aww",
-        author_fullname: "Tiago",
-        score: "1234",
-        num_comments: 37,
-        created: "1678641605.0",
-      },
-    },
+    posts: {},
+    loading: false,
   },
   reducers: {
     addPost: (state, action) => {
@@ -26,6 +24,7 @@ const postsSlice = createSlice({
         score,
         num_comments,
         created,
+        url_overridden_by_dest,
       } = action.payload;
       state.posts[id] = {
         id,
@@ -35,7 +34,17 @@ const postsSlice = createSlice({
         score,
         num_comments,
         created,
+        url_overridden_by_dest,
       };
+    },
+  },
+  extraReducers: {
+    [loadPosts.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [loadPosts.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.posts = action.payload;
     },
   },
 });

@@ -1,14 +1,17 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Post } from "./Post";
-import { selectPosts } from "./postsSlice";
+import { selectPosts, loadPosts } from "./postsSlice";
 import "./PostList.css";
-import { fetchPosts } from "./postsAPI";
 
 export function PostList(props) {
   const posts = useSelector(selectPosts);
+  const dispatch = useDispatch();
 
-  fetchPosts("popular");
+  useEffect(() => {
+    dispatch(loadPosts());
+  }, [dispatch]);
+
   return (
     <div className="post-list-container">
       <div className="post-list">
@@ -24,6 +27,7 @@ export function PostList(props) {
               score={post.score}
               num_comments={post.num_comments}
               created={post.created}
+              url_overridden_by_dest={post.url_overridden_by_dest}
             />
           );
         })}
