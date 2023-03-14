@@ -20,7 +20,7 @@ const postsSlice = createSlice({
         id,
         title,
         subreddit,
-        author_fullname,
+        author,
         score,
         num_comments,
         created,
@@ -32,7 +32,7 @@ const postsSlice = createSlice({
         id,
         title,
         subreddit,
-        author_fullname,
+        author,
         score,
         num_comments,
         created,
@@ -40,6 +40,10 @@ const postsSlice = createSlice({
         is_video,
         media,
       };
+    },
+    voteOnPostId: (state, action) => {
+      const { id, vote } = action.payload;
+      state.posts[id].score += vote;
     },
   },
   extraReducers: {
@@ -54,5 +58,5 @@ const postsSlice = createSlice({
 });
 
 export default postsSlice.reducer;
-export const { addPost } = postsSlice.actions;
+export const { addPost, voteOnPostId } = postsSlice.actions;
 export const selectPosts = (state) => state.posts.posts;
