@@ -25,13 +25,14 @@ export function Post({
             <img
               src={url_overridden_by_dest}
               alt="Post "
-              className="post-image-preview"
+              className="post-media-preview"
             ></img>
           ) : (
             <video
               src={media.reddit_video.fallback_url}
               type="video/mp4"
               controls
+              className="post-media-preview"
             />
           ))}
 
