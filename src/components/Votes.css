@@ -6,13 +6,15 @@
 }
 
 .post-vote-buttons {
-  font-size: clamp(0.3rem, 1vmin, 1rem);
+  font-size: clamp(0.3rem, 1.2vmin, 1rem);
 }
 
-.upvote-icon:hover {
+.upvote-icon:hover,
+.upvote-icon.active {
   background-image: url("../assets/upvoteActive.svg");
 }
 
-.downvote-icon:hover {
+.downvote-icon:hover,
+.downvote-icon.active {
   background-image: url("../assets/downvoteActive.svg");
 }
