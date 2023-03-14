@@ -9,7 +9,7 @@ describe("posts reducer", () => {
     const newPostInput = {
       id: 13,
       title: "Hi",
-      subrreddit: "aww",
+      subreddit: "aww",
       author_fullname: "Tiago",
       score: "1234",
       num_comments: 37,
@@ -20,7 +20,7 @@ describe("posts reducer", () => {
         13: {
           id: 13,
           title: "Hi",
-          subrreddit: "aww",
+          subreddit: "aww",
           author_fullname: "Tiago",
           score: "1234",
           num_comments: 37,

@@ -6,7 +6,7 @@ import "./Post.css";
 export function Post({
   id,
   title,
-  subrreddit,
+  subreddit,
   author_fullname,
   score,
   num_comments,

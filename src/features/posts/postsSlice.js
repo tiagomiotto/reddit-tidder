@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+// const fetchPosts = createAsyncThunk("posts/loadPosts", async(us));
 const postsSlice = createSlice({
   name: "posts",
   initialState: {
@@ -7,7 +8,7 @@ const postsSlice = createSlice({
       13: {
         id: 13,
         title: "Hi",
-        subrreddit: "aww",
+        subreddit: "aww",
         author_fullname: "Tiago",
         score: "1234",
         num_comments: 37,
@@ -20,7 +21,7 @@ const postsSlice = createSlice({
       const {
         id,
         title,
-        subrreddit,
+        subreddit,
         author_fullname,
         score,
         num_comments,
@@ -29,7 +30,7 @@ const postsSlice = createSlice({
       state.posts[id] = {
         id,
         title,
-        subrreddit,
+        subreddit,
         author_fullname,
         score,
         num_comments,
