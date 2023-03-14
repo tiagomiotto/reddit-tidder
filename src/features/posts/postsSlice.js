@@ -25,6 +25,8 @@ const postsSlice = createSlice({
         num_comments,
         created,
         url_overridden_by_dest,
+        is_video,
+        media,
       } = action.payload;
       state.posts[id] = {
         id,
@@ -35,6 +37,8 @@ const postsSlice = createSlice({
         num_comments,
         created,
         url_overridden_by_dest,
+        is_video,
+        media,
       };
     },
   },

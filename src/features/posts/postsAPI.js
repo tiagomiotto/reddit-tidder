@@ -15,6 +15,8 @@ export async function fetchPostsAPI(subreddit) {
       num_comments,
       created,
       url_overridden_by_dest,
+      is_video,
+      media,
     } = post.data;
 
     return {
@@ -26,6 +28,8 @@ export async function fetchPostsAPI(subreddit) {
       num_comments,
       created,
       url_overridden_by_dest,
+      is_video,
+      media,
     };
   });
 

@@ -12,19 +12,28 @@ export function Post({
   num_comments,
   created,
   url_overridden_by_dest,
+  is_video,
+  media,
 }) {
   return (
     <div className="post-frame">
       <Votes score={score} />
       <div className="post-content-frame">
         <h2 className="post-title">{title}</h2>
-        {url_overridden_by_dest && (
-          <img
-            src={url_overridden_by_dest}
-            alt="Post "
-            className="post-image-preview"
-          ></img>
-        )}
+        {url_overridden_by_dest &&
+          (!is_video ? (
+            <img
+              src={url_overridden_by_dest}
+              alt="Post "
+              className="post-image-preview"
+            ></img>
+          ) : (
+            <video
+              src={media.reddit_video.fallback_url}
+              type="video/mp4"
+              controls
+            />
+          ))}
 
         <PostFooter
           author_fullname={author_fullname}

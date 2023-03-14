@@ -28,6 +28,8 @@ export function PostList(props) {
               num_comments={post.num_comments}
               created={post.created}
               url_overridden_by_dest={post.url_overridden_by_dest}
+              is_video={post.is_video}
+              media={post.media}
             />
           );
         })}
