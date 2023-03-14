@@ -19,7 +19,7 @@ const postsSlice = createSlice({
         author: "Tiago",
         score: 1234,
         num_comments: 37,
-        created: "1678641605.0",
+        created: 1678641605.0,
         is_video: false,
         media: null,
         url_overridden_by_dest: null,
