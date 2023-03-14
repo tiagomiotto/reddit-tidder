@@ -30,6 +30,7 @@ export function PostList(props) {
               url_overridden_by_dest={post.url_overridden_by_dest}
               is_video={post.is_video}
               media={post.media}
+              voted={post.voted}
             />
           );
         })}

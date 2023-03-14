@@ -3,19 +3,19 @@ import downVoteIcon from "../assets/downvote.svg";
 import upVoteIcon from "../assets/upvote.svg";
 import "./Votes.css";
 
-export function Votes({ score, handleUpVote, handleDownVote }) {
+export function Votes({ score, voted, handleUpVote, handleDownVote }) {
   return (
     <div className="post-vote-buttons">
       <img
         src={upVoteIcon}
-        className="upvote-icon"
+        className={voted === "up" ? "upvote-icon active" : "upvote-icon"}
         alt="Upvote button"
         onClick={handleUpVote}
       ></img>
       <div>{score}</div>
       <img
         src={downVoteIcon}
-        className="downvote-icon"
+        className={voted === "down" ? "downvote-icon active" : "downvote-icon"}
         alt="Downvote icon"
         onClick={handleDownVote}
       ></img>

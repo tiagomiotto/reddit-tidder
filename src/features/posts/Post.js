@@ -16,15 +16,20 @@ export function Post({
   url_overridden_by_dest,
   is_video,
   media,
+  voted,
 }) {
   const dispatch = useDispatch();
 
   const handleUpVote = () => {
-    dispatch(voteOnPostId({ id, vote: 1 }));
+    if (voted !== "up") {
+      dispatch(voteOnPostId({ id, vote: 1 }));
+    }
   };
 
   const handleDownVote = () => {
-    dispatch(voteOnPostId({ id, vote: -1 }));
+    if (voted !== "down") {
+      dispatch(voteOnPostId({ id, vote: -1 }));
+    }
   };
 
   return (
@@ -33,6 +38,7 @@ export function Post({
         score={score}
         handleDownVote={handleDownVote}
         handleUpVote={handleUpVote}
+        voted={voted}
       />
       <div className="post-content-frame">
         <h2 className="post-title">{title}</h2>

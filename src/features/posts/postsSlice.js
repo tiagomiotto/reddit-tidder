@@ -11,7 +11,21 @@ export const loadPosts = createAsyncThunk(
 const postsSlice = createSlice({
   name: "posts",
   initialState: {
-    posts: {},
+    posts: {
+      13: {
+        id: 13,
+        title: "Hi",
+        subreddit: "aww",
+        author: "Tiago",
+        score: 1234,
+        num_comments: 37,
+        created: "1678641605.0",
+        is_video: false,
+        media: null,
+        url_overridden_by_dest: null,
+        voted: "",
+      },
+    },
     loading: false,
   },
   reducers: {
@@ -39,10 +53,17 @@ const postsSlice = createSlice({
         url_overridden_by_dest,
         is_video,
         media,
+        voted: "",
       };
     },
     voteOnPostId: (state, action) => {
       const { id, vote } = action.payload;
+      if (vote < 0) {
+        state.posts[id].voted = "down";
+      }
+      if (vote > 0) {
+        state.posts[id].voted = "up";
+      }
       state.posts[id].score += vote;
     },
   },

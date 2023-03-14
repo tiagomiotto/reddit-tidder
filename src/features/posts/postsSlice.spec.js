@@ -30,6 +30,7 @@ describe("posts reducer", () => {
       is_video: false,
       media: null,
       url_overridden_by_dest: null,
+      voted: "",
     };
     const expected = {
       13: {
@@ -43,6 +44,7 @@ describe("posts reducer", () => {
         is_video: false,
         media: null,
         url_overridden_by_dest: null,
+        voted: "",
       },
     };
 
