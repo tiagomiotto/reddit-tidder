@@ -6,7 +6,7 @@
 }
 
 .post-vote-buttons {
-  font-size: clamp(0.3rem, 1.5vmin, 1rem);
+  font-size: clamp(0.3rem, 1vmin, 1rem);
 }
 
 .upvote-icon:hover {

@@ -30,7 +30,7 @@
 .post-vote-buttons {
   position: absolute;
   left: 3%;
-  top: 10%;
+  top: 10px;
 }
 
 .post-title {
