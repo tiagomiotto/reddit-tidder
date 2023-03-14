@@ -7,7 +7,7 @@ export function Post({
   id,
   title,
   subreddit,
-  author_fullname,
+  author,
   score,
   num_comments,
   created,
@@ -37,7 +37,7 @@ export function Post({
           ))}
 
         <PostFooter
-          author_fullname={author_fullname}
+          author={author}
           num_comments={num_comments}
           created={created}
         />

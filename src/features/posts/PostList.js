@@ -23,7 +23,7 @@ export function PostList(props) {
               id={post.id}
               title={post.title}
               subreddit={post.subreddit}
-              author_fullname={post.author_fullname}
+              author={post.author}
               score={post.score}
               num_comments={post.num_comments}
               created={post.created}
