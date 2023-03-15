@@ -59,6 +59,7 @@ const postsSlice = createSlice({
     voteOnPostId: (state, action) => {
       const { id, vote } = action.payload;
       if (vote < 0) {
+        console.log(state.posts[id], id, state.posts);
         state.posts[id].voted = "down";
       }
       if (vote > 0) {
@@ -74,6 +75,11 @@ const postsSlice = createSlice({
     [loadPosts.fulfilled]: (state, action) => {
       state.loading = false;
       state.posts = action.payload;
+    },
+    [loadPosts.rejected]: (state, action) => {
+      state.loading = false;
+      state.posts = {};
+      console.log(action.payload);
     },
   },
 });
