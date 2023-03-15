@@ -6,5 +6,5 @@
 }
 
 .post-list {
-  width: clamp(300px, 50%, 800px);
+  width: clamp(300px, 100%, 600px);
 }
