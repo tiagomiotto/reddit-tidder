@@ -20,6 +20,9 @@ export async function fetchPostsAPI(subreddit) {
         url_overridden_by_dest,
         is_video,
         media,
+        post_hint,
+        preview,
+        secure_media_embed,
       } = post.data;
 
       return {
@@ -33,6 +36,9 @@ export async function fetchPostsAPI(subreddit) {
         url_overridden_by_dest,
         is_video,
         media,
+        post_hint,
+        preview,
+        secure_media_embed,
         voted: "",
       };
     });
@@ -52,6 +58,9 @@ export async function fetchPostsAPI(subreddit) {
         url_overridden_by_dest,
         is_video,
         media,
+        post_hint,
+        preview,
+        secure_media_embed,
       } = parsedDataChildren[key];
 
       postsLoaded[id] = {
@@ -65,6 +74,9 @@ export async function fetchPostsAPI(subreddit) {
         url_overridden_by_dest,
         is_video,
         media,
+        post_hint,
+        preview,
+        secure_media_embed,
         voted: "",
       };
     });

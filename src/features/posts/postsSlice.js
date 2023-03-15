@@ -87,3 +87,4 @@ const postsSlice = createSlice({
 export default postsSlice.reducer;
 export const { addPost, voteOnPostId } = postsSlice.actions;
 export const selectPosts = (state) => state.posts.posts;
+export const selectPostById = (state, id) => state.posts.posts[id];
