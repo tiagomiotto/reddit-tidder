@@ -23,13 +23,17 @@ export function Post({
 
   const handleUpVote = () => {
     if (voted !== "up") {
-      dispatch(voteOnPostId({ id, vote: 1 }));
+      dispatch(voteOnPostId({ id, vote: "up" }));
+    } else {
+      dispatch(voteOnPostId({ id, vote: "" }));
     }
   };
 
   const handleDownVote = () => {
     if (voted !== "down") {
-      dispatch(voteOnPostId({ id, vote: -1 }));
+      dispatch(voteOnPostId({ id, vote: "down" }));
+    } else {
+      dispatch(voteOnPostId({ id, vote: "" }));
     }
   };
 

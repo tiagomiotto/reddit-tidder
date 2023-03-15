@@ -58,14 +58,25 @@ const postsSlice = createSlice({
     },
     voteOnPostId: (state, action) => {
       const { id, vote } = action.payload;
-      if (vote < 0) {
-        console.log(state.posts[id], id, state.posts);
-        state.posts[id].voted = "down";
+
+      switch (vote) {
+        case "up":
+          state.posts[id].score += 1;
+          state.posts[id].voted = "up";
+          break;
+        case "down":
+          state.posts[id].score -= 1;
+          state.posts[id].voted = "down";
+          break;
+        default:
+          if (state.posts[id].voted === "up") {
+            state.posts[id].score -= 1;
+          } else if (state.posts[id].voted === "down") {
+            state.posts[id].score += 1;
+          }
+          state.posts[id].voted = "";
+          break;
       }
-      if (vote > 0) {
-        state.posts[id].voted = "up";
-      }
-      state.posts[id].score += vote;
     },
   },
   extraReducers: {
