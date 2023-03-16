@@ -17,6 +17,7 @@ export function Post({
   is_video,
   media,
   voted,
+  postIndex = 0,
 }) {
   const dispatch = useDispatch();
   const postData = useSelector((state) => selectPostById(state, id));
@@ -37,8 +38,12 @@ export function Post({
     }
   };
 
+  const postIndexStyle = {
+    "--post-index": postIndex + 1,
+  };
+
   return (
-    <div className="post-frame">
+    <div className="post-frame" style={postIndexStyle}>
       <Votes
         score={score}
         handleDownVote={handleDownVote}

@@ -9,7 +9,7 @@ export function PostList(props) {
   const posts = useSelector(selectPosts);
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
-
+  let currentPostIndex = 0;
   useEffect(() => {
     dispatch(loadPosts());
   }, [dispatch]);
@@ -22,6 +22,8 @@ export function PostList(props) {
         ) : (
           Object.keys(posts).map((key) => {
             const post = posts[key];
+            const postIndex = currentPostIndex;
+            currentPostIndex += 1;
             return (
               <Post
                 key={post.id}
@@ -36,6 +38,7 @@ export function PostList(props) {
                 is_video={post.is_video}
                 media={post.media}
                 voted={post.voted}
+                postIndex={postIndex}
               />
             );
           })
