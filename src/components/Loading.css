@@ -1,0 +1,11 @@
+.loading {
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(0.3rem, 1.5vmin, 1.5rem);
+  align-items: center;
+}
+
+.loading img {
+  /* height: 10vmin; */
+  width: 20vmin;
+}
