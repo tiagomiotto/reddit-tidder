@@ -1,7 +1,7 @@
 const url = "https://www.reddit.com";
 
 export async function fetchPostsAPI(subreddit) {
-  const queryUrl = url + "/r/" + subreddit + ".json";
+  const queryUrl = url + "/r/" + subreddit + ".json?limit=100";
 
   try {
     const response = await fetch(queryUrl);

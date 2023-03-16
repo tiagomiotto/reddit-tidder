@@ -87,7 +87,17 @@ export function Post({
                 className="post-media-preview"
               />
             ),
-            "rich:video": <div>Rich video</div>,
+            "rich:video": postData.secure_media_embed.media_domain_url && (
+              <iframe
+                title={"Post video"}
+                width={postData.secure_media_embed.width}
+                height={postData.secure_media_embed.height + 5}
+                style={{
+                  transform: "scale(0.8)",
+                }}
+                src={postData.secure_media_embed.media_domain_url}
+              ></iframe>
+            ),
           }[postData.post_hint]
         }
         <PostFooter

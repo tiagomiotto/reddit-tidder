@@ -12,7 +12,7 @@
   position: relative;
   opacity: 0;
 
-  animation: fade-in 1s calc(0.2s * var(--post-index)) ease-out forwards;
+  animation: fade-in 1s calc(0.1s * var(--post-index)) ease-out forwards;
 }
 
 @keyframes fade-in {
