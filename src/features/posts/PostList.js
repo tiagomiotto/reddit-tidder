@@ -10,39 +10,59 @@ export function PostList(props) {
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
   let currentPostIndex = 0;
+
   useEffect(() => {
-    dispatch(loadPosts());
+    let ignore = false;
+    if (!ignore) {
+      dispatch(loadPosts());
+    }
+
+    function handleScroll(e) {
+      if (
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - 100
+      ) {
+        if (!ignore) {
+          dispatch(loadPosts());
+        }
+      }
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      ignore = true;
+    };
   }, [dispatch]);
 
   return (
     <div className="post-list-container">
       <div className="post-list">
-        {isLoading ? (
-          <Loading />
-        ) : (
-          Object.keys(posts).map((key) => {
-            const post = posts[key];
-            const postIndex = currentPostIndex;
-            currentPostIndex += 1;
-            return (
-              <Post
-                key={post.id}
-                id={post.id}
-                title={post.title}
-                subreddit={post.subreddit}
-                author={post.author}
-                score={post.score}
-                num_comments={post.num_comments}
-                created={post.created}
-                url_overridden_by_dest={post.url_overridden_by_dest}
-                is_video={post.is_video}
-                media={post.media}
-                voted={post.voted}
-                postIndex={postIndex}
-              />
-            );
-          })
-        )}
+        {Object.keys(posts).map((key) => {
+          if (currentPostIndex >= 25) {
+            currentPostIndex = 0;
+          }
+          const post = posts[key];
+          const postIndex = currentPostIndex;
+          currentPostIndex += 1;
+          return (
+            <Post
+              key={post.id}
+              id={post.id}
+              title={post.title}
+              subreddit={post.subreddit}
+              author={post.author}
+              score={post.score}
+              num_comments={post.num_comments}
+              created={post.created}
+              url_overridden_by_dest={post.url_overridden_by_dest}
+              is_video={post.is_video}
+              media={post.media}
+              voted={post.voted}
+              postIndex={postIndex}
+            />
+          );
+        })}
+        {isLoading && <Loading />}
       </div>
     </div>
   );

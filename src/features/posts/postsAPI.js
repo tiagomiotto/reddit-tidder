@@ -1,8 +1,7 @@
 const url = "https://www.reddit.com";
 
-export async function fetchPostsAPI(subreddit) {
-  const queryUrl = url + "/r/" + subreddit + ".json?limit=100";
-
+export async function fetchPostsAPI(subreddit, limit = 100, lastItemName) {
+  const queryUrl = `${url}/r/${subreddit}.json?limit=${limit}&after=${lastItemName}`;
   try {
     const response = await fetch(queryUrl);
     const responseJSON = await response.json();
@@ -11,6 +10,7 @@ export async function fetchPostsAPI(subreddit) {
     const parsedDataChildren = responseJSON.data.children.map((post) => {
       const {
         id,
+        name,
         title,
         subreddit,
         author,
@@ -27,6 +27,7 @@ export async function fetchPostsAPI(subreddit) {
 
       return {
         id,
+        name,
         title,
         subreddit,
         author,
@@ -49,6 +50,7 @@ export async function fetchPostsAPI(subreddit) {
     Object.keys(parsedDataChildren).forEach((key) => {
       const {
         id,
+        name,
         title,
         subreddit,
         author,
@@ -65,6 +67,7 @@ export async function fetchPostsAPI(subreddit) {
 
       postsLoaded[id] = {
         id,
+        name,
         title,
         subreddit,
         author,

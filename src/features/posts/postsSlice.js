@@ -3,35 +3,29 @@ import { fetchPostsAPI } from "./postsAPI";
 
 export const loadPosts = createAsyncThunk(
   "posts/loadPosts",
-  async (thunkAPI) => {
-    const response = await fetchPostsAPI("popular");
+  async (action, { getState }) => {
+    const state = getState();
+
+    const response = await fetchPostsAPI(
+      "popular",
+      25,
+      state.posts.lastPostName
+    );
     return response;
   }
 );
 const postsSlice = createSlice({
   name: "posts",
   initialState: {
-    posts: {
-      13: {
-        id: 13,
-        title: "Hi",
-        subreddit: "aww",
-        author: "Tiago",
-        score: 1234,
-        num_comments: 37,
-        created: 1678641605.0,
-        is_video: false,
-        media: null,
-        url_overridden_by_dest: null,
-        voted: "",
-      },
-    },
-    loading: true,
+    posts: {},
+    loading: false,
+    lastPostName: "",
   },
   reducers: {
     addPost: (state, action) => {
       const {
         id,
+        name,
         title,
         subreddit,
         author,
@@ -41,9 +35,13 @@ const postsSlice = createSlice({
         url_overridden_by_dest,
         is_video,
         media,
+        post_hint,
+        preview,
+        secure_media_embed,
       } = action.payload;
       state.posts[id] = {
         id,
+        name,
         title,
         subreddit,
         author,
@@ -53,8 +51,12 @@ const postsSlice = createSlice({
         url_overridden_by_dest,
         is_video,
         media,
+        post_hint,
+        preview,
+        secure_media_embed,
         voted: "",
       };
+      state.lastPostName += name;
     },
     voteOnPostId: (state, action) => {
       const { id, vote } = action.payload;
@@ -78,6 +80,9 @@ const postsSlice = createSlice({
           break;
       }
     },
+    setLoading: (state) => {
+      state.loading = true;
+    },
   },
   extraReducers: {
     [loadPosts.pending]: (state, action) => {
@@ -85,7 +90,11 @@ const postsSlice = createSlice({
     },
     [loadPosts.fulfilled]: (state, action) => {
       state.loading = false;
-      state.posts = action.payload;
+      state.posts = { ...state.posts, ...action.payload };
+      state.lastPostName =
+        state.posts[
+          Object.keys(state.posts)[Object.keys(state.posts).length - 1]
+        ].name;
     },
     [loadPosts.rejected]: (state, action) => {
       state.loading = false;
@@ -96,7 +105,7 @@ const postsSlice = createSlice({
 });
 
 export default postsSlice.reducer;
-export const { addPost, voteOnPostId } = postsSlice.actions;
+export const { addPost, voteOnPostId, setLoading } = postsSlice.actions;
 export const selectPosts = (state) => state.posts.posts;
 export const selectPostById = (state, id) => state.posts.posts[id];
 export const selectIsLoading = (state) => state.posts.loading;

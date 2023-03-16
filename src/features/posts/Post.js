@@ -80,6 +80,7 @@ export function Post({
               ></img>
             ),
             "hosted:video": is_video && (
+              // Videos have no audio. Reddit API splits video and audio tracks
               <video
                 src={media.reddit_video.fallback_url}
                 type="video/mp4"
