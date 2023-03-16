@@ -54,7 +54,24 @@ export function Post({
         <h2 className="post-title">{title}</h2>
         {
           {
-            link: <div>Link</div>,
+            link: postData.preview && (
+              <div>
+                <a
+                  href={url_overridden_by_dest}
+                  alt="Post "
+                  className="post-media-preview"
+                >
+                  <img
+                    src={postData.preview.images[0].source.url.replace(
+                      /&amp;/g,
+                      "&"
+                    )}
+                    alt="Post "
+                    className="post-media-preview"
+                  ></img>
+                </a>
+              </div>
+            ),
             image: (
               <img
                 src={url_overridden_by_dest}
