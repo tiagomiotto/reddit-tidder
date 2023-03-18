@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Post } from "./Post";
 import { selectPosts, loadPosts, selectIsLoading } from "./postsSlice";
 import "./PostList.css";
-import { Loading } from "../../components/Loading";
+import { Loading } from "../../components/Loading/Loading";
 
 export function PostList(props) {
   const posts = useSelector(selectPosts);

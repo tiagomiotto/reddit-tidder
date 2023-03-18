@@ -1,6 +1,6 @@
 import React from "react";
-import { Votes } from "../../components/Votes";
-import { PostFooter } from "../../components/PostFooter";
+import { Votes } from "../../components/Votes/Votes";
+import { PostFooter } from "../../components/PostFooter/PostFooter";
 import "./Post.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectPostById, voteOnPostId } from "./postsSlice";

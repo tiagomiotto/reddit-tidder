@@ -1,6 +1,6 @@
 import React from "react";
-import downVoteIcon from "../assets/downvote.svg";
-import upVoteIcon from "../assets/upvote.svg";
+import downVoteIcon from "../../assets/downvote.svg";
+import upVoteIcon from "../../assets/upvote.svg";
 import "./Votes.css";
 
 export function Votes({ score, voted, handleUpVote, handleDownVote }) {

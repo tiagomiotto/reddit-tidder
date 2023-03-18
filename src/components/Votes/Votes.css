@@ -11,10 +11,10 @@
 
 .upvote-icon:hover,
 .upvote-icon.active {
-  background-image: url("../assets/upvoteActive.svg");
+  background-image: url("../../assets/upvoteActive.svg");
 }
 
 .downvote-icon:hover,
 .downvote-icon.active {
-  background-image: url("../assets/downvoteActive.svg");
+  background-image: url("../../assets/downvoteActive.svg");
 }
