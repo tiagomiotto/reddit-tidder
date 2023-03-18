@@ -5,25 +5,12 @@ import "./Post.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectPostById, voteOnPostId } from "./postsSlice";
 
-export function Post({
-  id,
-  title,
-  subreddit,
-  author,
-  score,
-  num_comments,
-  created,
-  url_overridden_by_dest,
-  is_video,
-  media,
-  voted,
-  postIndex = 0,
-}) {
+export function Post({ id, postIndex = 0 }) {
   const dispatch = useDispatch();
   const postData = useSelector((state) => selectPostById(state, id));
 
   const handleUpVote = () => {
-    if (voted !== "up") {
+    if (postData.voted !== "up") {
       dispatch(voteOnPostId({ id, vote: "up" }));
     } else {
       dispatch(voteOnPostId({ id, vote: "" }));
@@ -31,7 +18,7 @@ export function Post({
   };
 
   const handleDownVote = () => {
-    if (voted !== "down") {
+    if (postData.voted !== "down") {
       dispatch(voteOnPostId({ id, vote: "down" }));
     } else {
       dispatch(voteOnPostId({ id, vote: "" }));
@@ -45,19 +32,19 @@ export function Post({
   return (
     <div className="post-frame" style={postIndexStyle}>
       <Votes
-        score={score}
+        score={postData.score}
         handleDownVote={handleDownVote}
         handleUpVote={handleUpVote}
-        voted={voted}
+        voted={postData.voted}
       />
       <div className="post-content-frame">
-        <h2 className="post-title">{title}</h2>
+        <h2 className="post-title">{postData.title}</h2>
         {
           {
             link: postData.preview && (
               <div>
                 <a
-                  href={url_overridden_by_dest}
+                  href={postData.url_overridden_by_dest}
                   alt="Post "
                   className="post-media-preview"
                 >
@@ -74,15 +61,15 @@ export function Post({
             ),
             image: (
               <img
-                src={url_overridden_by_dest}
+                src={postData.url_overridden_by_dest}
                 alt="Post "
                 className="post-media-preview"
               ></img>
             ),
-            "hosted:video": is_video && (
+            "hosted:video": postData.is_video && (
               // Videos have no audio. Reddit API splits video and audio tracks
               <video
-                src={media.reddit_video.fallback_url}
+                src={postData.media.reddit_video.fallback_url}
                 type="video/mp4"
                 controls
                 className="post-media-preview"
@@ -102,9 +89,9 @@ export function Post({
           }[postData.post_hint]
         }
         <PostFooter
-          author={author}
-          num_comments={num_comments}
-          created={created}
+          author={postData.author}
+          num_comments={postData.num_comments}
+          created={postData.created}
         />
       </div>
     </div>

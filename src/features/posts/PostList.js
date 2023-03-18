@@ -44,23 +44,7 @@ export function PostList(props) {
           const post = posts[key];
           const postIndex = currentPostIndex;
           currentPostIndex += 1;
-          return (
-            <Post
-              key={post.id}
-              id={post.id}
-              title={post.title}
-              subreddit={post.subreddit}
-              author={post.author}
-              score={post.score}
-              num_comments={post.num_comments}
-              created={post.created}
-              url_overridden_by_dest={post.url_overridden_by_dest}
-              is_video={post.is_video}
-              media={post.media}
-              voted={post.voted}
-              postIndex={postIndex}
-            />
-          );
+          return <Post key={post.id} id={post.id} postIndex={postIndex} />;
         })}
         {isLoading && <Loading />}
       </div>
