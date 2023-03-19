@@ -20,6 +20,7 @@ const postsSlice = createSlice({
     posts: {},
     loading: false,
     lastPostName: "",
+    searchTerm: "",
   },
   reducers: {
     addPost: (state, action) => {
@@ -83,29 +84,47 @@ const postsSlice = createSlice({
     setLoading: (state) => {
       state.loading = true;
     },
+    setSearchTerm: (state, action) => {
+      state.searchTerm = action.payload;
+    },
   },
-  extraReducers: {
-    [loadPosts.pending]: (state, action) => {
-      state.loading = true;
-    },
-    [loadPosts.fulfilled]: (state, action) => {
-      state.loading = false;
-      state.posts = { ...state.posts, ...action.payload };
-      state.lastPostName =
-        state.posts[
-          Object.keys(state.posts)[Object.keys(state.posts).length - 1]
-        ].name;
-    },
-    [loadPosts.rejected]: (state, action) => {
-      state.loading = false;
-      state.posts = {};
-      console.log(action.payload);
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(loadPosts.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(loadPosts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.posts = { ...state.posts, ...action.payload };
+        state.lastPostName =
+          state.posts[
+            Object.keys(state.posts)[Object.keys(state.posts).length - 1]
+          ].name;
+      })
+      .addCase(loadPosts.rejected, (state, action) => {
+        state.loading = false;
+        state.posts = {};
+        console.log(action.payload);
+      });
   },
 });
 
 export default postsSlice.reducer;
-export const { addPost, voteOnPostId, setLoading } = postsSlice.actions;
-export const selectPosts = (state) => state.posts.posts;
+export const { addPost, voteOnPostId, setLoading, setSearchTerm } =
+  postsSlice.actions;
+export const selectAllPosts = (state) => state.posts.posts;
+export const selectPosts = (state) => {
+  const filteredPosts = {};
+  Object.keys(state.posts.posts).forEach((key) => {
+    if (
+      state.posts.posts[key].title
+        .toLowerCase()
+        .includes(state.posts.searchTerm.toLowerCase())
+    ) {
+      filteredPosts[key] = state.posts.posts[key];
+    }
+  });
+  return filteredPosts;
+};
 export const selectPostById = (state, id) => state.posts.posts[id];
 export const selectIsLoading = (state) => state.posts.loading;

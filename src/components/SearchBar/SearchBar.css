@@ -1,0 +1,24 @@
+.search-bar input {
+  width: clamp(250px, 85%, 550px);
+  min-height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 1em;
+  outline: none;
+}
+
+.search-bar {
+  margin-top: 1vmin;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar input::before {
+  content: url("../../assets/reddit.svg");
+  display: inline-block;
+  width: 1.25em;
+  height: 1.25em;
+  margin-right: 0.5em;
+}

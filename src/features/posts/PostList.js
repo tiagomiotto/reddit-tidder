@@ -4,6 +4,7 @@ import { Post } from "./Post";
 import { selectPosts, loadPosts, selectIsLoading } from "./postsSlice";
 import "./PostList.css";
 import { Loading } from "../../components/Loading/Loading";
+import { SearchBar } from "../../components/SearchBar/SearchBar";
 
 export function PostList(props) {
   const posts = useSelector(selectPosts);
@@ -36,6 +37,7 @@ export function PostList(props) {
 
   return (
     <div className="post-list-container">
+      <SearchBar />
       <div className="post-list">
         {Object.keys(posts).map((key) => {
           if (currentPostIndex >= 25) {
