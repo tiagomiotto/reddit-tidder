@@ -5,10 +5,9 @@
 }
 
 .post-frame {
-  margin: 1rem 1rem;
+  margin: 1rem;
   box-shadow: 5px 5px 20px 0px #f8f9fa4b;
   background-color: var(--bg-color-post);
-  /* background-color: #111314c2; */
   position: relative;
   opacity: 0;
 
