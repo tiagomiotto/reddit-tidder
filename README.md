@@ -43,6 +43,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Thanks to the following resources for helping to inspire and guide the development of this project:
 
-- [React documentation](https://reactjs.org/docs/getting-started.html)
+- [React documentation](https://react.dev/learn)
 - [Redux documentation](https://redux.js.org/introduction/getting-started)
-- [React Router documentation](https://reactrouter.com/web/guides/quick-start)
+- [React Router documentation](https://reactrouter.com/en/6.9.0/start/overview)
