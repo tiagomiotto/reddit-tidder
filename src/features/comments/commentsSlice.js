@@ -10,20 +10,20 @@ const commentsSlice = createSlice({
                 score: 1234,
                 author: "Tiago",
                 parent_id: "t3_123",
-                is_reply: false
+                children: []
             }
         }
     },
     reducers: {
         addComment: (state, action) => {
-            const { id, body, author, score, parent_id, is_reply } = action.payload;
+            const { id, body, author, score, parent_id, children } = action.payload;
             state.comments[id] = {
                 id,
                 body,
                 author,
                 score,
                 parent_id,
-                is_reply
+                children,
             }
         }
     }

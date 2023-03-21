@@ -14,7 +14,8 @@ describe("comments reducer", () => {
             score: 1234,
             author: "Tiago",
             parent_id: "t3_123",
-            is_reply: false
+            is_reply: false,
+            children: []
         }
         const expected = {
             13: {
@@ -23,7 +24,7 @@ describe("comments reducer", () => {
                 score: 1234,
                 author: "Tiago",
                 parent_id: "t3_123",
-                is_reply: false
+                children: []
             }
         };
         expect(commentsReducer(undefined, addComment(newCommentInput))).toEqual({
