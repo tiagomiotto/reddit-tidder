@@ -1,0 +1,55 @@
+.post-frame,
+.post-content-frame {
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.post-frame {
+  margin: 1rem;
+  box-shadow: 5px 5px 20px 0px #f8f9fa4b;
+  background-color: var(--bg-color-post);
+  position: relative;
+  opacity: 0;
+  z-index: 2;
+  animation: fade-in 1s calc(0.1s * var(--post-index)) ease-out forwards;
+}
+
+@keyframes fade-in {
+  0% {
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.post-content-frame {
+  background-color: var(--bg-color-post-content);
+  position: relative;
+  left: 10%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post-media-preview {
+  max-width: 50%;
+  /* display: none; */
+}
+
+.post-vote-buttons {
+  position: absolute;
+  left: 1vmin;
+  top: 1vmin;
+}
+
+.post-title {
+  font-size: calc(12px + 1vmin);
+  width: 100%;
+  text-align: center;
+}
