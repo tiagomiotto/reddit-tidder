@@ -88,3 +88,7 @@ export async function fetchPostsAPI(subreddit, limit = 100, lastItemName) {
     console.log(e.message);
   }
 }
+
+
+
+
