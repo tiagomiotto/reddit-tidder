@@ -4,8 +4,10 @@ import { PostFooter } from "../../components/PostFooter/PostFooter";
 import "./Post.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectPostById, voteOnPostId } from "./postsSlice";
+import { useNavigate } from "react-router-dom";
 
 export function Post({ id, postIndex = 0 }) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const postData = useSelector((state) => selectPostById(state, id));
 
@@ -25,6 +27,11 @@ export function Post({ id, postIndex = 0 }) {
     }
   };
 
+  const handleClick = () => {
+    console.log(`handle click ${id}`);
+    navigate(`/posts/${id}`, { replace: false })
+  }
+
   const postIndexStyle = {
     "--post-index": postIndex + 1,
   };
@@ -37,7 +44,7 @@ export function Post({ id, postIndex = 0 }) {
         handleUpVote={handleUpVote}
         voted={postData.voted}
       />
-      <div className="post-content-frame">
+      <div className="post-content-frame" onClick={handleClick}>
         <h2 className="post-title">{postData.title}</h2>
         {
           {

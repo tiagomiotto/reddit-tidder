@@ -1,5 +1,5 @@
 .search-bar input {
-  width: clamp(250px, 85%, 550px);
+  width: clamp(200px, 80%, 550px);
   min-height: 40px;
   border: 1px solid #ccc;
   border-radius: 5px;

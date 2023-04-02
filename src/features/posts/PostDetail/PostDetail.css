@@ -1,17 +1,28 @@
+.post-detail{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+
 .post-frame,
 .post-content-frame {
   box-sizing: border-box;
   border-radius: 10px;
 }
 
-.post-frame {
+.post-detail .post-frame {
   margin: 1rem;
   box-shadow: 5px 5px 20px 0px #f8f9fa4b;
   background-color: var(--bg-color-post);
   position: relative;
-  opacity: 0;
-  z-index: 2;
-  animation: fade-in 1s calc(0.1s * var(--post-index)) ease-out forwards;
+  opacity: 1;
+  width: clamp(250px, 80%, 1200px);
+
+  /* z-index: 2; */
+  /* animation: fade-in 1s calc(0.1s * var(--post-index)) ease-out forwards; */
 }
 
 @keyframes fade-in {
